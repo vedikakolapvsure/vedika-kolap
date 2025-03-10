@@ -42,26 +42,36 @@ function ServiceCard({ icon: Icon, title, description }) {
 function AboutSection() {
   return (
     <div className="space-y-12">
-      <div>
-        <h1 className="text-4xl font-bold text-white mb-4">About Me</h1>
-        <div className="w-16 h-1 bg-purple-400 mb-8" />
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-white mb-8">About Me</h1>
+          <div className="w-16 h-1 bg-purple-400 mb-8" />
+        </div>
+        
+        <a
+          href="/Resume_vedika.pdf" // Update this with the actual path to your resume
+          download
+          className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
+        >
+          Download Resume
+        </a>
+      </div>
 
-        <div className="space-y-6">
-          <p className="text-lg text-gray-300 leading-relaxed">
+      <div className="space-y-6">
+        <p className="text-lg text-gray-300 leading-relaxed">
           A passionate and detail-oriented software developer with expertise in Java, SQL, and
-           UI/UX design. Skilled in building efficient applications, working with databases, 
-           and enhancing user experiences. Experienced in developing interactive applications,
-            designing intuitive user interfaces, and implementing scalable solutions. 
-            Adept at working with modern development tools and frameworks to create 
-            high-quality software.
-          </p>
+          UI/UX design. Skilled in building efficient applications, working with databases, 
+          and enhancing user experiences. Experienced in developing interactive applications,
+          designing intuitive user interfaces, and implementing scalable solutions. 
+          Adept at working with modern development tools and frameworks to create 
+          high-quality software.
+        </p>
 
-          <p className="text-lg text-gray-300 leading-relaxed">
+        <p className="text-lg text-gray-300 leading-relaxed">
           If you're looking for a dedicated developer who can bring innovation and precision 
           to your project, I’m here to collaborate and deliver exceptional results. 
           Let’s build something remarkable together!
-          </p>
-        </div>
+        </p>
       </div>
 
       <div>
@@ -93,31 +103,38 @@ function AboutSection() {
   )
 }
 
+
 function ProjectsSection() {
   const projects = [
     {
-      title: "Revo",
-      subtitle: "Free Framer Template",
-      image: "/project1.jpg",
+      title: "Electricity Billing System",
+      subtitle: "Using Java, Mysql",
+      image: "/project1.jpeg",
       link: "#",
     },
     {
-      title: "NajmAI",
-      subtitle: "SaaS Framer Template",
+      title: "Ebike Android App",
+      subtitle: "Using Java, firebase, html, css",
       image: "/project2.jpg",
       link: "#",
     },
     {
-      title: "Nashra",
-      subtitle: "SaaS Framer Template",
+      title: "Power Generation and Piezo Technology",
+      subtitle: "Using IOT Components",
       image: "/project3.jpg",
+      link: "#",
+    },
+    {
+      title: "Personal Portfolio",
+      subtitle: "Next.js and TypeScript, using Tailwind CSS for styling",
+      image: "/project4.png",
       link: "#",
     },
   ]
 
   return (
     <div className="space-y-8">
-      <h1 className="text-4xl font-bold text-white mb-4">Projects</h1>
+      <h1 className="text-3xl font-bold text-white mb-8">Projects</h1>
       <div className="w-16 h-1 bg-purple-400 mb-8" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -250,7 +267,7 @@ function SkillsSection() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-4xl font-bold text-white mb-4">Skills</h1>
+      <h1 className="text-3xl font-bold text-white mb-8">Skills</h1>
       <div className="w-16 h-1 bg-purple-400 mb-8" />
 
       <div className="grid grid-cols-2 gap-8">
@@ -331,8 +348,8 @@ export default function Home() {
       default:
         return (
           <>
-            <h1 className="text-3xl font-bold text-white mb-3">Resume</h1>
-            <div className="w-12 h-1 bg-purple-400 mb-6" />
+            <h1 className="text-3xl font-bold text-white mb-8">Resume</h1>
+            <div className="w-16 h-1 bg-purple-400 mb-14" />
             <ResumeSection title="Experience" items={experience} />
             <ResumeSection title="Education" items={education} />
             <ResumeSection title="Certifications" items={Certifications} />
