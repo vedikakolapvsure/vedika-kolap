@@ -292,7 +292,7 @@ function SkillsSection() {
 }
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("AboutSection")
+  const [activeSection, setActiveSection] = useState("home")
 
   const experience = [
     {
@@ -403,4 +403,3 @@ export default function Home() {
     </div>
   )
 }
-
