@@ -151,7 +151,7 @@ function ProjectsSection() {
     {
       title: "Anvex Insight..",
       subtitle: "Working on website....",
-      image: "/project5.png",
+      image: "#",
       link: "Using React",
     },
  
