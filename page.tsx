@@ -130,6 +130,31 @@ function ProjectsSection() {
       image: "/project4.png",
       link: "#",
     },
+    {
+      title: "Kouriex",
+      subtitle: "Built using wix",
+      image: "/project4.png",
+      link: "https://www.kourierx.com/",
+    },
+    {
+      title: "Capitor Venture",
+      subtitle: "Built using wix",
+      image: "/project4.png",
+      link: "https://www.capitorventures.com/",
+    },
+    {
+      title: "Capitor Infra",
+      subtitle: "Built using wix",
+      image: "/project5.png",
+      link: "https://www.capitorinfra.com/",
+    },
+    {
+      title: "Anvex Insight..",
+      subtitle: "Working on website....",
+      image: "/project5.png",
+      link: "Using React",
+    },
+ 
   ]
 
   return (
@@ -292,7 +317,7 @@ function SkillsSection() {
 }
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("AboutSection")
+  const [activeSection, setActiveSection] = useState("home")
 
   const experience = [
     {
