@@ -132,13 +132,13 @@ function ProjectsSection() {
     },
     {
       title: "Kouriex",
-      subtitle: "Built using wix",
+      subtitle: "https://www.kourierx.com/",
       image: "/project7.png",
       link: "https://www.kourierx.com/",
     },
     {
       title: "Capitor Venture",
-      subtitle: "Built using wix",
+      subtitle: "https://www.capitorventures.com/",
       image: "/project5.png",
       link: "https://www.capitorventures.com/",
     },
