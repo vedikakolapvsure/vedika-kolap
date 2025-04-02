@@ -144,7 +144,7 @@ function ProjectsSection() {
     },
     {
       title: "Capitor Infra",
-      subtitle: "Built using wix",
+      subtitle: "https://www.capitorinfra.com/",
       image: "/project6.png",
       link: "https://www.capitorinfra.com/",
     },
