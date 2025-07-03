@@ -4,27 +4,44 @@ import { useState } from "react"
 import { Book, Code, PhoneIcon, Linkedin,Smartphone, Pen, Database } from "lucide-react"
 
 function ProjectCard({ title, subtitle, image, link }) {
+  const isExternal = link && link.startsWith("http");
+  const Wrapper = ({ children }) =>
+    link ? (
+      <a
+        href={link}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        className="block"
+      >
+        {children}
+      </a>
+    ) : (
+      <div>{children}</div>
+    );
+
   return (
-    <div className="group relative bg-zinc-900/30 rounded-3xl overflow-hidden cursor-pointer hover:bg-zinc-800/50 transition-all duration-300">
-      <div className="aspect-[4/3] w-full overflow-hidden">
-        <img
-          src={image || "/placeholder.svg"}
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-base text-gray-300 mb-4">{subtitle}</p>
-        <div className="flex items-center gap-2 text-purple-400">
-          <span>View Project</span>
-          <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" viewBox="0 0 16 16" fill="none">
-            <path d="M1 8h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+    <Wrapper>
+      <div className="group relative bg-zinc-900/30 rounded-3xl overflow-hidden cursor-pointer hover:bg-zinc-800/50 transition-all duration-300">
+        <div className="aspect-[4/3] w-full overflow-hidden">
+          <img
+            src={image || "/placeholder.svg"}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+          <p className="text-base text-gray-300 mb-4">{subtitle}</p>
+          <div className="flex items-center gap-2 text-purple-400">
+            <span>View Project</span>
+            <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" viewBox="0 0 16 16" fill="none">
+              <path d="M1 8h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    </Wrapper>
+  );
 }
 
 function ServiceCard({ icon: Icon, title, description }) {
@@ -49,7 +66,7 @@ function AboutSection() {
         </div>
         
         <a
-          href="/Vedika_Kolap_Resume.pdf" // Update this with the actual path to your resume
+          href="/Resume_vedika.pdf" // Update this with the actual path to your resume
           download
           className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
         >
@@ -128,30 +145,30 @@ function ProjectsSection() {
       title: "Personal Portfolio",
       subtitle: "Next.js and TypeScript, using Tailwind CSS for styling",
       image: "/project4.png",
-      link: "#",
+      link: "https://vedika-kolap.vercel.app",
     },
     {
       title: "Kouriex",
-      subtitle: "https://www.kourierx.com/",
+      subtitle: "Built using wix",
       image: "/project7.png",
       link: "https://www.kourierx.com/",
     },
     {
       title: "Capitor Venture",
-      subtitle: "https://www.capitorventures.com/",
+      subtitle: "Built using wix",
       image: "/project5.png",
       link: "https://www.capitorventures.com/",
     },
     {
       title: "Capitor Infra",
-      subtitle: "https://www.capitorinfra.com/",
+      subtitle: "Built using wix",
       image: "/project6.png",
       link: "https://www.capitorinfra.com/",
     },
     {
       title: "Anvex Insight..",
       subtitle: "Working on website....",
-      image: "#",
+      image: "/project7.png",
       link: "Using React",
     },
  
