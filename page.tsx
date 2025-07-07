@@ -270,14 +270,14 @@ function Sidebar() {
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-gray-400 uppercase">LINKEDIN</span>
-            <Link
+            <a
               href="https://www.linkedin.com/in/vedikakolap/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-base text-gray-300 hover:text-purple-400 transition-colors truncate"
             >
               linkedin.com/in/vedikakolap/
-            </Link>
+            </a>
           </div>
         </div>
 
