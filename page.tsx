@@ -1,20 +1,34 @@
 "use client"
 
+import Link from "next/link";
 import { useState } from "react"
 import { Book, Code, PhoneIcon, Linkedin,Smartphone, Pen, Database } from "lucide-react"
 
-function ProjectCard({ title, subtitle, image, link }) {
+type ProjectCardProps = {
+  title: string;
+  subtitle: string;
+  image?: string;
+  link?: string;
+};
+
+function ProjectCard({ title, subtitle, image, link }: ProjectCardProps) {
   const isExternal = link && link.startsWith("http");
-  const Wrapper = ({ children }) =>
+  const Wrapper = ({ children }: { children: React.ReactNode }) =>
     link ? (
-      <a
-        href={link}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-        className="block"
-      >
-        {children}
-      </a>
+      isExternal ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          {children}
+        </a>
+      ) : (
+        <Link href={link} className="block">
+          {children}
+        </Link>
+      )
     ) : (
       <div>{children}</div>
     );
@@ -44,7 +58,13 @@ function ProjectCard({ title, subtitle, image, link }) {
   );
 }
 
-function ServiceCard({ icon: Icon, title, description }) {
+type ServiceCardProps = {
+  icon: React.ComponentType<{ className?: string; size?: string | number }>;
+  title: string;
+  description: string;
+};
+
+function ServiceCard({ icon: Icon, title, description }: ServiceCardProps) {
   return (
     <div className="bg-zinc-900/30 rounded-xl p-6 hover:bg-zinc-800/50 transition-all duration-300">
       <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4">
@@ -65,13 +85,13 @@ function AboutSection() {
           <div className="w-16 h-1 bg-purple-400 mb-8" />
         </div>
         
-        <a
-          href="/Resume_vedika.pdf" // Update this with the actual path to your resume
-          download
+        <Link
+          href="/Vedika_Kolap_Resume.pdf"
           className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
+          download
         >
           Download Resume
-        </a>
+        </Link>
       </div>
 
       <div className="space-y-6">
@@ -275,18 +295,6 @@ function Sidebar() {
   )
 }
 
-
-function NavLink({ href, children, active, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`text-base transition-colors ${active ? "text-white" : "text-gray-400 hover:text-gray-200"}`}
-    >
-      {children}
-    </button>
-  )
-}
-
 function SkillsSection() {
   const skills = [
     {
@@ -334,8 +342,6 @@ function SkillsSection() {
 }
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("home")
-
   const experience = [
     {
       title: "Full Stack Developer",
@@ -379,27 +385,6 @@ export default function Home() {
     },
   ]
 
-  const renderContent = () => {
-    switch (activeSection) {
-      case "skills":
-        return <SkillsSection />
-      case "about":
-        return <AboutSection />
-      case "projects":
-        return <ProjectsSection />
-      default:
-        return (
-          <>
-            <h1 className="text-3xl font-bold text-white mb-8">Resume</h1>
-            <div className="w-16 h-1 bg-purple-400 mb-14" />
-            <ResumeSection title="Experience" items={experience} />
-            <ResumeSection title="Education" items={education} />
-            <ResumeSection title="Certifications" items={Certifications} />
-          </>
-        )
-    }
-  }
-
   return (
     <div className="relative min-h-screen">
       <div className="fixed inset-0 bg-gradient-to-br from-[#0d0d14] to-[#1a1428]" />
@@ -411,21 +396,10 @@ export default function Home() {
               <img src="/pp.png" alt="Profile" className="w-18 h-16 rounded-full" />
 
               <div className="flex-1 flex justify-center gap-8 text-2xl">
-                <NavLink active={activeSection === "about"} onClick={() => setActiveSection("about")}>
-                  <span className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-white" />
-                    {`</ About me>`}
-                  </span>
-                </NavLink>
-                <NavLink active={activeSection === "skills"} onClick={() => setActiveSection("skills")}>
-                  {`</ Skills>`}
-                </NavLink>
-                <NavLink active={activeSection === "Resume"} onClick={() => setActiveSection("Resume")}>
-                  {'</ Resume>'}
-                </NavLink>
-                <NavLink active={activeSection === "projects"} onClick={() => setActiveSection("projects")}>
-                  {`</ Projects>`}
-                </NavLink>
+                <Link href="/about" className="text-base text-gray-400 hover:text-white transition-colors">About</Link>
+                <Link href="/skills" className="text-base text-gray-400 hover:text-white transition-colors">Skills</Link>
+                <Link href="/resume" className="text-base text-gray-400 hover:text-white transition-colors">Resume</Link>
+                <Link href="/projects" className="text-base text-gray-400 hover:text-white transition-colors">Projects</Link>
               </div>
             </div>
           </nav>
@@ -438,7 +412,13 @@ export default function Home() {
       <main className="relative z-10 pl-[300px] pt-32">
         <div className="max-w-[calc(100vw-380px)] mx-auto">
           <div className="rounded-3xl bg-zinc-900/30 backdrop-blur-lg border border-zinc-800 p-10">
-            {renderContent()}
+            <>
+              <h1 className="text-3xl font-bold text-white mb-8">Resume</h1>
+              <div className="w-16 h-1 bg-purple-400 mb-14" />
+              <ResumeSection title="Experience" items={experience} />
+              <ResumeSection title="Education" items={education} />
+              <ResumeSection title="Certifications" items={Certifications} />
+            </>
           </div>
         </div>
       </main>
